@@ -136,6 +136,7 @@
     <ClCompile Include="GameMode.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Rect.cpp" />
     <ClCompile Include="SimpleEngine.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
@@ -146,6 +147,7 @@
     <ClInclude Include="Actor.h" />
     <ClInclude Include="GameMode.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="Rect.h" />
     <ClInclude Include="SimpleEngine.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>

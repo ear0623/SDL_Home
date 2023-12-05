@@ -25,12 +25,9 @@ void UWorld::SpawnActor(AActor* actor)
 
 void UWorld::Tick()
 {
-	for (const auto& Actor : Actors)
-	{
-		if (Actor)
-		{
-			Actor->Tick();
-		}
+	for ( auto Actor : Actors)
+	{	
+		Actor->Tick();
 	}
 }
 

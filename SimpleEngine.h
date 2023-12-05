@@ -7,9 +7,12 @@
 #pragma comment(lib,"SDL2")
 #pragma comment(lib,"SDL2main")
 
+#define GEngine FSimpleEngine::GetInstance()
+
 class UWorld;
 class AGameMode;
 class AGameState;
+class AActor;
 
 class FSimpleEngine
 {
@@ -27,14 +30,19 @@ public:
 	static AGameMode* GetGameMode() { return GetInstance()->GameMode;}
 	static AGameState* GetGameState() { return GetInstance()->GameState;}
 	//
+	//
+	inline UWorld* GetWorld() const { return World; }
+	inline SDL_Renderer* GetMyRenderer() const { return MyRenderer; }
+	inline SDL_Window* GetMyWindow() const { return MyWindow; }
+	//
+	AActor* MakeActor;
 
 protected:
 	bool bIsRunning;
-	UWorld* World;
-	SDL_Window* Window;
-	SDL_Renderer* Renderer;
+	SDL_Window* MyWindow;
+	SDL_Renderer* MyRenderer;
 	SDL_Event MyEvent;
-
+	UWorld* World;
 	Uint64 DeltaSeconds;
 	Uint64 LastTime;
 
