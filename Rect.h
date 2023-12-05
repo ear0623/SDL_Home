@@ -3,6 +3,7 @@
 #include"Actor.h"
 
 class b2Draw;
+class b2World;
 
 class ARect:public AActor
 {
@@ -18,5 +19,8 @@ public:
 
 protected:
 	b2Draw* DrawRect;
+	b2BodyDef RectBodyDef;
+	b2World* M_World;
+	b2Body* DynamicBody;
 };
 

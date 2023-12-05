@@ -27,6 +27,7 @@ void FSimpleEngine::Render()
 
 void FSimpleEngine::LoadActor(int NewX, int NewY, char Actor)
 {
+
 }
 
 FSimpleEngine::FSimpleEngine()
@@ -76,6 +77,8 @@ void FSimpleEngine::Run()
 		GetWorld()->SpawnActor(MakeActor);
 		Render();
 		SDL_RenderPresent(GEngine->MyRenderer);
+
+		
 		
 	}
 }
@@ -88,12 +91,12 @@ void FSimpleEngine::Stop()
 void FSimpleEngine::Term()
 {
 	delete World;
-	SDL_RenderClear;
+	//SDL_RenderClear;
 }
 
 void FSimpleEngine::LoadLevel(std::string FileName)
 {
-
+	
 }
 
 FSimpleEngine* FSimpleEngine::GetInstance()

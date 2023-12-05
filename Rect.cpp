@@ -4,6 +4,7 @@
 
 ARect::ARect()
 {
+	DynamicBody = M_World->CreateBody(&RectBodyDef);
 }
 
 ARect::~ARect()
@@ -21,9 +22,13 @@ void ARect::Tick()
 void ARect::Render()
 {
 	__super::Render();
-	struct b2Vec2 Vector2D = { 50.0f,50.0f };//float32
-	float32 Radius = 50.0f;
-	const b2Color& Color = {0,255,255,0};//float32
-	DrawRect->DrawCircle(Vector2D,Radius,Color);
+
+	
+	RectBodyDef.type = b2_dynamicBody;
+	RectBodyDef.position.Set(0, 20);
+	RectBodyDef.angle = 0;
+	
+
 	std::cout << "ARectRender";
+
 }
