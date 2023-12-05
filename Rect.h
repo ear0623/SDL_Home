@@ -16,11 +16,11 @@ public:
 	virtual void Render()override;
 
 	
-
+	
+	
 protected:
 	b2Draw* DrawRect;
-	b2BodyDef RectBodyDef;
 	b2World* M_World;
-	b2Body* DynamicBody;
+	
 };
 
