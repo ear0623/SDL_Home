@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include "SDL.h"
+#include "Box2D.h"
 
 #pragma comment(lib,"SDL2")
 #pragma comment(lib,"SDL2main")
@@ -37,7 +38,6 @@ public:
 	inline SDL_Renderer* GetMyRenderer() const { return MyRenderer; }
 	inline SDL_Window* GetMyWindow() const { return MyWindow; }
 	//
-
 	AActor* MakeActor;
 
 protected:
@@ -54,9 +54,6 @@ protected:
 	static FSimpleEngine* Instance;
 	static AGameMode* GameMode;
 	static AGameState* GameState;
-
-
-	
 
 	void Input();
 	void Tick();

@@ -1,9 +1,11 @@
 #include "World.h"
 #include <algorithm>
 #include "Actor.h"
+#include "Box2D.h"
 
 UWorld::UWorld()
 {
+	Gravity = { 0.0f,600.0f };
 }
 
 UWorld::~UWorld()
@@ -42,3 +44,9 @@ void UWorld::Render()
 void UWorld::SortRenderOrder()
 {
 }
+
+void UWorld::SetGravity()
+{
+	b2World GravityWorld(Gravity);
+}
+

@@ -135,11 +135,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="Floar.cpp" />
     <ClCompile Include="GameMode.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="SimpleEngine.cpp" />
+    <ClCompile Include="UMyQueryCallback.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -147,10 +149,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
+    <ClInclude Include="Floar.h" />
     <ClInclude Include="GameMode.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="SimpleEngine.h" />
+    <ClInclude Include="UMyQueryCallback.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
