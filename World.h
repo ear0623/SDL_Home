@@ -17,11 +17,11 @@ public:
 	void Render();
 
 	void SortRenderOrder();
-	void SetGravity();
+	
 	//get
 	const std::vector<AActor*>& GetAllactors() { return Actors; }
 	//
-	b2Vec2 Gravity;
+	
 
 protected:
 	std::vector<AActor*> Actors;

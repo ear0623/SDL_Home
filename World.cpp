@@ -5,7 +5,7 @@
 
 UWorld::UWorld()
 {
-	Gravity = { 0.0f,600.0f };
+	
 }
 
 UWorld::~UWorld()
@@ -45,8 +45,4 @@ void UWorld::SortRenderOrder()
 {
 }
 
-void UWorld::SetGravity()
-{
-	b2World GravityWorld(Gravity);
-}
 

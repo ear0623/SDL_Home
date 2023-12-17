@@ -14,8 +14,7 @@ class UWorld;
 class AGameMode;
 class AGameState;
 class AActor;
-struct b2Vec2;
-class b2World;
+class AGravityComponent;
 
 class FSimpleEngine
 {
@@ -38,6 +37,7 @@ public:
 	inline SDL_Renderer* GetMyRenderer() const { return MyRenderer; }
 	inline SDL_Window* GetMyWindow() const { return MyWindow; }
 	//
+	inline AGravityComponent* GetGravitY() const { return Gravity; }
 	AActor* MakeActor;
 
 protected:
@@ -48,6 +48,7 @@ protected:
 	UWorld* World;
 	Uint64 DeltaSeconds;
 	Uint64 LastTime;
+	AGravityComponent* Gravity;
 	
 	
 
@@ -59,6 +60,7 @@ protected:
 	void Tick();
 	void Render();
 	void LoadActor(int NewX, int NewY, char Actor);
+
 
 private:
 	FSimpleEngine();

@@ -6,9 +6,7 @@
 
 AActor::AActor()
 {
-	ActorGravity = { 0.0f,600.0f };
-	BodyDef.position.Set(0.0f, 0.0f);
-	b2World GravityWorld(ActorGravity);
+	
 }
 
 AActor::~AActor()

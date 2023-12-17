@@ -138,6 +138,7 @@
     <ClCompile Include="Floar.cpp" />
     <ClCompile Include="GameMode.cpp" />
     <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="GravityComponent.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="SimpleEngine.cpp" />
@@ -152,6 +153,7 @@
     <ClInclude Include="Floar.h" />
     <ClInclude Include="GameMode.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="GravityComponent.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="SimpleEngine.h" />
     <ClInclude Include="UMyQueryCallback.h" />

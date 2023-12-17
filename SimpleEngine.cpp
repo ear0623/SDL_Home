@@ -6,6 +6,7 @@
 #include <iostream>
 #include <fstream>
 #include "UMyQueryCallback.h"
+#include "GravityComponent.h"
 
 #pragma comment(lib,"SDL2")
 #pragma comment(lib, "SDL2main")
@@ -51,41 +52,31 @@ void FSimpleEngine::Init()
 {
 	bIsRunning = true;
 	World = new UWorld();
+	Gravity = nullptr;
+
 }
 
 void FSimpleEngine::Run()
 {
-	World->SetGravity();
-	
-	//官蹿积己
-	b2BodyDef GroundBodyDef;
-	GroundBodyDef.position.Set(0.0f, 550.0f);
-	b2Body* Groundbody = GravityWorld.CreateBody(&GroundBodyDef);
+	Gravity = new AGravityComponent();
+	Gravity->SettingGravity(0.0f,9.8f);
+	Gravity->CreateBox(0.0f,100.0f,100.0f,100.0f,0.0f,b2_staticBody);
 
-	b2PolygonShape GroundBox;
-	GroundBox.SetAsBox(50.0f, 10.0f);
-	Groundbody->CreateFixture(&GroundBox, 0.0f);
-
-	SDL_Rect GroundRect{ (int)Groundbody->GetPosition().x,(int)Groundbody->GetPosition().y,50,10 };
+	SDL_Rect GroundRect{(int)Gravity->GetBody()->GetPosition().x,(int)Gravity->GetBody()->GetPosition().y,50,10};
 
 	SDL_SetRenderDrawColor(GEngine->MyRenderer, 255, 0, 0, 255); 
 	SDL_RenderFillRect(GEngine->MyRenderer, &GroundRect); 
 	
 	//惑磊积己
-	b2BodyDef BoxBodyDef;
-	BoxBodyDef.type = b2_dynamicBody;
-	BoxBodyDef.position.Set(0.0f, 4.0f);
-	b2Body* BoxBody = GravityWorld.CreateBody(&BoxBodyDef);
+	Gravity->CreateBox(0.0f, 0.0f, 10.0f, 10.0f, 1.0f,b2_dynamicBody);
 
-	b2PolygonShape BoxBodyShape;
-	BoxBodyShape.SetAsBox(10.0f, 10.0f);
-	BoxBody->CreateFixture(&BoxBodyShape, 1.0f);
+
 	
 
 	while (bIsRunning)
 
 	{
-		GravityWorld.Step(1.0f / 60.0f, 6, 2);
+		Gravity->GetGravityWorld()->Step(1.0f / 60.0f, 6, 2);
 		Tick();
 		Input();
 		Render();
@@ -113,7 +104,7 @@ void FSimpleEngine::Run()
 				callback.Point = WorldPos;
 				std::cout << "Click";
 
-				GravityWorld.QueryAABB(&callback, aabb);
+				Gravity->GetGravityWorld()->QueryAABB(&callback, aabb);
 
 				b2BodyDef SpawnBoxBodyDef;
 				SpawnBoxBodyDef.type = b2_dynamicBody;
@@ -127,7 +118,7 @@ void FSimpleEngine::Run()
 				RedBoxFixtureDef.density = 1.0f;
 				RedBoxFixtureDef.friction = 0.3f;
 
-				b2Body* SpawnBoxBody = GravityWorld.CreateBody(&SpawnBoxBodyDef);
+				b2Body* SpawnBoxBody = Gravity->GetGravityWorld()->CreateBody(&SpawnBoxBodyDef);
 				SpawnBoxBody->CreateFixture(&RedBoxFixtureDef);
 				SDL_SetRenderDrawColor(GEngine->MyRenderer, 255, 0, 0, 255);
 				SDL_Rect SpawnRect = { static_cast<int>(WorldPos.x), (int)(WorldPos.y), 10, 10 };
@@ -141,7 +132,7 @@ void FSimpleEngine::Run()
 			bIsRunning = false;
 			break;
 		}
-		b2Vec2 RectPosition = BoxBody->GetPosition();
+		b2Vec2 RectPosition = Gravity->GetBody()->GetPosition();
 		SDL_SetRenderDrawColor(GEngine->MyRenderer, 255, 255, 255, 255);
 		SDL_RenderClear(GEngine->MyRenderer);
 		SDL_SetRenderDrawColor(GEngine->MyRenderer, 255, 0, 0, 255);
@@ -161,6 +152,7 @@ void FSimpleEngine::Stop()
 void FSimpleEngine::Term()
 {
 	delete World;
+	delete Gravity;
 	SDL_RenderClear(MyRenderer);
 }
 
